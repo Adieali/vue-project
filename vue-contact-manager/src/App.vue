@@ -1,9 +1,12 @@
 <template>
-  <h2>App Component</h2>
+  <NavBar/>
+  <router-view/>
 </template>
 
 <script>
+  import NavBar from "@/components/NavBar";
   export default {
-    name: 'App'
+    name: 'App',
+    components: {NavBar}
   }
 </script>

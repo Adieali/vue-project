@@ -1,0 +1,59 @@
+<template>
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col">
+        <p class="h3 text-success fw-bold">Edit Contact</p>
+        <p class="fst-italic">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi doloremque sed cumque consequatur repellat facilis ex reiciendis qui, similique dolorem enim quisquam, quod nobis, tempora aut? Corrupti tempore esse sit.</p>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col-md-4">
+        <form>
+          <div class="mb-2">
+            <input type="text" class="form-control" placeholder="Name">
+          </div>
+          <div class="mb-2">
+            <input type="text" class="form-control" placeholder="Photo URL">
+          </div>
+          <div class="mb-2">
+            <input type="text" class="form-control" placeholder="Email">
+          </div>
+          <div class="mb-2">
+            <input type="number" class="form-control" placeholder="Mobile">
+          </div>
+          <div class="mb-2">
+            <input type="text" class="form-control" placeholder="Company">
+          </div>
+          <div class="mb-2">
+            <input type="text" class="form-control" placeholder="Title">
+          </div>
+          <div class="mb-2">
+            <select class="form-control">
+              <option value="">Select Group</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <input type="submit" class="btn btn-danger" value="Update">
+            <router-link to="/" class="btn btn-dark ms-2">close</router-link>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-4">
+        <img src="https://th.bing.com/th/id/R.6b0022312d41080436c52da571d5c697?rik=EBuuBNxzjeKhkQ&pid=ImgRaw&r=0" alt="" class="contact-img">
+      </div>
+    </div>
+  </div>
+</template>
+  
+<script>
+    export default {
+      name: 'EditContact'
+    }
+</script>
+
+<style scoped>
+    
+</style>
+  
