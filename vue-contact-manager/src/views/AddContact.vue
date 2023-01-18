@@ -10,28 +10,29 @@
   <div class="container mt-3">
     <div class="row">
       <div class="col-md-4">
-        <form>
+        <form @submit.prevent="submitCreate()">
           <div class="mb-2">
-            <input type="text" class="form-control" placeholder="Name">
+            <input v-model="contact.name" type="text" class="form-control" placeholder="Name" required="true">
           </div>
           <div class="mb-2">
-            <input type="text" class="form-control" placeholder="Photo URL">
+            <input v-model="contact.photo" type="text" class="form-control" placeholder="Photo URL" required="true">
           </div>
           <div class="mb-2">
-            <input type="text" class="form-control" placeholder="Email">
+            <input v-model="contact.email" type="text" class="form-control" placeholder="Email" required="true">
           </div>
           <div class="mb-2">
-            <input type="number" class="form-control" placeholder="Mobile">
+            <input v-model="contact.mobile" type="number" class="form-control" placeholder="Mobile" required="true">
           </div>
           <div class="mb-2">
-            <input type="text" class="form-control" placeholder="Company">
+            <input v-model="contact.company" type="text" class="form-control" placeholder="Company" required="true">
           </div>
           <div class="mb-2">
-            <input type="text" class="form-control" placeholder="Title">
+            <input v-model="contact.title" type="text" class="form-control" placeholder="Title" required="true">
           </div>
           <div class="mb-2">
-            <select class="form-control">
+            <select v-model="contact.groupId" class="form-control" v-if="groups.length > 0" required="true">
               <option value="">Select Group</option>
+              <option :value="group.id" v-for="group of groups" :key="group.id">{{group.name}}</option>
             </select>
           </div>
           <div class="mb-2">
@@ -40,15 +41,53 @@
         </form>
       </div>
       <div class="col-md-4">
-        <img src="https://th.bing.com/th/id/R.6b0022312d41080436c52da571d5c697?rik=EBuuBNxzjeKhkQ&pid=ImgRaw&r=0" alt="" class="contact-img">
+        <img :src="contact.photo" alt="" class="contact-img">
       </div>
     </div>
   </div>
 </template>
   
 <script>
+import { ContactService } from '@/services/ContactService';
+
     export default {
-      name: 'AddContact'
+      name: 'AddContact',
+      data: function (){
+        return {
+          contact : {
+            name : '',
+            photo : '',
+            email : '',
+            company : '',
+            title : '',
+            groupId : '',
+          },
+          groups : []
+        }
+      },
+      created : async function (){
+        try {
+          let response = await ContactService.getAllGroups();
+          this.groups = response.data;
+        } catch (error) {
+            console.log(error);
+        }
+      },
+      methods : {
+        submitCreate : async function (){
+          try {
+            let response = await ContactService.createContact(this.contact);
+            if(response){
+              return this.$router.push('/');
+            }
+            else{
+              return this.$router.push('/contacts/add');
+            }
+          } catch (error) {
+              console.log(error);
+          }
+        }
+      }
     }
 </script>
 
