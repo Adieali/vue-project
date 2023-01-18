@@ -1,24 +1,25 @@
-# vue-contact-manager
+# Vue-project
+Vue Contact Manager CRUD Application 
 
-## Project setup
-```
-npm install
-```
+# Steps for Client:
+1. Download the source code
+2. inside application -> type "npm install"
+3. to start the application -> "npm start"
+4. open browser : http://localhost:8080
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+# Steps for Server:
+1. inside server folder -> type "npm install"
+2. to start the server -> "npm start"
+3. open browser : http://localhost:9000
+Useful links for API's
+GET all contacts : GET -> http://localhost:9000/contacts
 
-### Lints and fixes files
-```
-npm run lint
-```
+Get a Single contact : GET -> http://localhost:9000/contacts/:id
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Create a contact : POST -> http://localhost:9000/contacts/
+
+Update a contact : PUT -> http://localhost:9000/contacts/:id
+
+DELETE a contact : DELETE -> http://localhost:9000/contacts/:id
+
